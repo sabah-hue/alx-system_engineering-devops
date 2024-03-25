@@ -1,5 +1,5 @@
 #Using Puppet, create a manifest that kills a process named killmenow
-file { 'kill process':
+exec { 'pkill killmenow':
     command  => 'pkill killmenow',
     provider => shell,
 }
