@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#commands to automatically configure a Ubuntu machine
+sudo apt-get -y update
+sudo apt-get -y install nginx
+#sed -i 's/listen 80 default_server/listen 80/' /etc/nginx/sites-available/default
+sudo chown -R $USER:$USER /var/www/html/index.nginx-debian.html
+sudo echo "Hello World!" > /var/www/html/index.nginx-debian.html
