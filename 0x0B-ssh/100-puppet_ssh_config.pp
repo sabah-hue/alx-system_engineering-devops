@@ -1,7 +1,8 @@
 # SSH configuration file for the local SSH client
-file { 'Config-file':
+file { 'config':
     ensure  => 'file',
-    path    => '/etc/ssh/school',
-    content => '    IdentityFile ~/.ssh/school
+    path    => '/etc/ssh/ssh_config',
+    content => 'Host *   
+                    IdentityFile ~/.ssh/school
                     PasswordAuthentication no',
 }
