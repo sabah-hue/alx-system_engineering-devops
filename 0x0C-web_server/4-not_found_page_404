@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#Configure Nginx server so /redirect_me is redirecting to another page
+apt-get -y update
+apt-get -y install nginx
+ufw allow 'Nginx HTTP'
+chown -R $USER:$USER /var/www/html/index.nginx-debian.html
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+direct_to="https://www.youtube.com/watch?v=QH2-TGUlwu4"
+new_string="rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;"
+sed -i "37i\$new_string" /etc/nginx/sites-enabled/default
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/page_error_404.html
+service nginx start
