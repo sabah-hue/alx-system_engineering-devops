@@ -3,10 +3,10 @@
 apt-get -y update
 apt-get -y install nginx
 ufw allow 'Nginx HTTP'
-chown -R $USER:$USER /var/www/html/index.nginx-debian.html
+chown -R "$USER":"$USER" /var/www/html/index.nginx-debian.html
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
-direct_to="https://www.youtube.com/watch?v=QH2-TGUlwu4"
-new_string="rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;"
-sed -i "37i\$new_string" /etc/nginx/sites-enabled/default
-echo "Ceci n'est pas une page" > /usr/share/nginx/html/page_error_404.html
-service nginx start
+sudo sed -i "/server_name _;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-enabled/default
+echo "Ceci n'est pas une page" > /var/www/html/page_404.html
+page_not_found="error_page 404 /page_404.html;\n\\tlocation = /page_404.html {\n\t\t root /var/www/html;\n\t\tinternal;\n\t}\n"
+sed -i "s@#error_page 404 /404.html;@$page_not_found@" /etc/nginx/sites-available/default
+service nginx restart
