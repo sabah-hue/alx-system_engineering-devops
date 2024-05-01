@@ -3,18 +3,16 @@
 apt-get -y update
 apt-get install --no-install-recommends software-properties-common
 add-apt-repository ppa:vbernat/haproxy-2.6
-apt-get install haproxy=2.6.\*
-HAPROXY_STRING=\
-"
-frontend sabah-alx.tech-frontend
-        bind *:80
-        mode http
-        default_backend sabah-alx.tech-backend
+apt-get install haproxy=2.6.*
+HAPROXY_STRING="frontend sabah-alx.tech-frontend
+bind *:80
+mode http
+default_backend sabah-alx.tech-backend
 backend sabah-alx.tech-backend
-        balance roundrobin
-        server 363477-web-01 100.25.41.212:80 check
-        server 363477-web-02 100.25.103.239:80 check
-"
+balance roundrobin
+server 363477-web-01 100.25.41.212:80 check
+server 363477-web-02 100.25.103.239:80 check"
+
 echo "ENABLED=1" >> /etc/default/haproxy
 echo "$HAPROXY_STRING" >> /etc/haproxy/haproxy.cfg
 service haproxy start
