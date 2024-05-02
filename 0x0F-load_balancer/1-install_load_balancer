@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 #Install and configure HAproxy on lb-01 server
 apt-get -y update
-apt-get -y install --no-install-recommends software-properties-common
-add-apt-repository -y ppa:vbernat/haproxy-2.6
-apt-get install haproxy
+apt-get -y install haproxy
 # echo "ENABLED=1" >> /etc/default/haproxy
 echo "
 frontend sabah-alx.tech
