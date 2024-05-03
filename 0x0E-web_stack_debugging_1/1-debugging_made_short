@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#Bash script to fix my server fix short and sweet
+sudo ufw allow 'Nginx HTTP'
+service nginx restart
+pkill nginx
