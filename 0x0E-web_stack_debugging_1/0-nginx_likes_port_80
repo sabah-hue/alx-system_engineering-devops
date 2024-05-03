@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 #Bash script that configures a server to the above requirements
-sudo ufw allow 'Nginx HTTP'
+sudo apt-get -y install nginx
 sudo service nginx stop
 sudo service nginx start
