@@ -1,2 +1,18 @@
 #!/usr/bin/env bash
-if  [$# -eq 1] then;
+#Bash script that will display information about subdomains
+display_DNS () {
+    if [ -z "$2" ]; then
+        echo "subdomain is required."
+        return 1
+    fi
+    input=$(dig $1 | grep -A1 'ANSWER SECTION:' | awk 'NR==2 {print $0}')
+    echo "The subdomain $2 is a $(echo $input | awk '{print $4}') record and points to $(echo $input | awk '{print $5}')"
+}
+subdomains=('www' 'lb-01' 'web-01' 'web-02')
+if [[ $# == 1 ]]; then
+    for i in "${subdomains[@]}"; do
+	display_DNS $1 $i
+    done
+elif [[ $# == 2 ]]; then
+    display_DNS $1 $2
+fi
