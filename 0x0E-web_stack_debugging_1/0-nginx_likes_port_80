@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 #Bash script that configures a server to the above requirements
 sudo apt-get -y install nginx
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo service nginx start
