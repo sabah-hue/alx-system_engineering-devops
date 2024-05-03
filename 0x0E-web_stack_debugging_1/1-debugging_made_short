@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 #Bash script to fix my server fix short and sweet
 apt-get -y install nginx
-sudo service nginx start
-pkill "$(pgrep 'nginx' | head -1)"
+sudo service nginx restart
+pkill nginx
