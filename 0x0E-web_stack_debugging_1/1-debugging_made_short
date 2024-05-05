@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 #Bash script to fix my server fix short and sweet
-sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
-sudo service nginx start
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx start
 pkill nginx
