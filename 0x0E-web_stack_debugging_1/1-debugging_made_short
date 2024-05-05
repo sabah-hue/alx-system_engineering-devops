@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 #Bash script to fix my server fix short and sweet
-ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo ufw allow 'Nginx HTTP'
 service nginx start
 pkill nginx
