@@ -2,6 +2,7 @@
 #configure nginx to running as user and listening on all active IPs on port 8080
 addgroup --system nginx
 adduser --system --ingroup nginx nginx
+chown nginx:nginx /etc/nginx/nginx.conf
 sed -i 's/listen 80;/listen 8080;/' /etc/nginx/nginx.conf
 sed -i '/listen 80;/d' /etc/nginx/sites-enabled/default
 service nginx restart
