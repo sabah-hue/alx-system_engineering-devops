@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 #configure nginx to running as user and listening on all active IPs on port 8080
+sudo adduser --system --no-create-home nginx
 sed -i "s/80/8080/g" /etc/nginx/sites-enabled/default
 sudo -u nginx service nginx start
