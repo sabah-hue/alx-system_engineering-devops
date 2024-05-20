@@ -23,8 +23,8 @@ if __name__ == "__main__":
         if task['completed']:
             tasks += 1
 
-    print(f"Employee {user_name} is done with tasks \
-          ({tasks}/{len(user_todo)}): ")
+    print(f"Employee {user_name} is done with \
+tasks({tasks}/{len(user_todo)}):")
 
     for task in user_todo:
         if task['completed']:
