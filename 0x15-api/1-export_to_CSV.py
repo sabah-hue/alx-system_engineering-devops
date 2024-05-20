@@ -14,7 +14,7 @@ if __name__ == "__main__":
     link_todo = f"https://jsonplaceholder.typicode.com/todos?userId={u_id}"
     res_user = requests.get(link_user)
     res_todo = requests.get(link_todo)
-    user_name = res_user.json()['name']
+    user_name = res_user.json()['username']
     user_todo = res_todo.json()
     nl = '\n'
     with open(f"{u_id}.csv", 'w', encoding='UTF8') as f:
