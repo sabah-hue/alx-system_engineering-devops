@@ -19,5 +19,5 @@ if __name__ == "__main__":
     nl = '\n'
     with open(f"{u_id}.csv", 'w', encoding='UTF8') as f:
         for task in user_todo:
-            f.write(f"{u_id},{user_name},{task['completed']},\
-{task['title']}{nl}")
+            f.write(f""""{u_id}","{user_name}","{task['completed']}",\
+"{task['title']}"{nl}""")
