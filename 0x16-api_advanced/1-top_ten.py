@@ -11,7 +11,7 @@ def top_ten(subreddit):
     """prints the titles of the first 10 hot posts"""
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
     response = requests.get(url, timeout=10,
-                            params={"limit": 10}, allow_redirects=False)
+                            params={"limit": 9}, allow_redirects=False)
     if response.status_code == 200:
         data = response.json()
         count = data['data']['children']

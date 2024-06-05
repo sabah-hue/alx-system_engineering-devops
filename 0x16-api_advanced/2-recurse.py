@@ -9,15 +9,18 @@ the function should return None.
 import requests
 
 
-def recurse(subreddit, hot_list=[]):
+def recurse(subreddit, hot_list=[], after=None):
     """prints the titles of all hot articles"""
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
     response = requests.get(url, timeout=10,
-                            params={"limit": 10}, allow_redirects=False)
+                            allow_redirects=False)
     if response.status_code == 200:
         data = response.json()
         count = data['data']['children']
-        for i in range(0, 10):
-            print(count[i]['data']['title'])
+        for i in count:
+            hot_list.append(i['data']['title'])
+        if data['data']['after']:
+            recurse(subreddit, hot_list)
+        return hot_list
     else:
         print('None')
