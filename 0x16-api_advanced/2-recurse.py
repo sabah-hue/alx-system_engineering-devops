@@ -7,20 +7,25 @@ the function should return None.
 """
 
 import requests
+after = None
 
 
-def recurse(subreddit, hot_list=[], after=None):
+def recurse(subreddit, hot_list=[]):
     """prints the titles of all hot articles"""
+    global after
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
-    response = requests.get(url, timeout=10,
-                            allow_redirects=False)
-    if response.status_code == 200:
-        data = response.json()
-        count = data['data']['children']
-        for i in count:
-            hot_list.append(i['data']['title'])
-        if data['data']['after']:
+    results = requests.get(url, params={'after': after},
+                           allow_redirects=False)
+
+    if results.status_code == 200:
+        data = results.json()
+        after_data = data["data"]["after"]
+        if after_data is not None:
+            after = after_data
             recurse(subreddit, hot_list)
+        titles = data["data"]["children"]
+        for title in titles:
+            hot_list.append(title["data"]["title"])
         return hot_list
     else:
-        print('None')
+        return (None)
