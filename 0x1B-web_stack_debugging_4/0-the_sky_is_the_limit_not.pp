@@ -1,8 +1,8 @@
 # bring ULIMIT higher
 exec { 'higher-ulimit':
-    command => '/usr/bin/env sed -i s/15/4096 /etc/default/nginx',
+    command => '/usr/local/bin:/bin/sed -i "s/15/2000" /etc/default/nginx',
 }
 
 exec { 'restat-nginx':
-    command => 'service restart nginx',
+    command => '/etc/init.d/nginx restart',
 }
