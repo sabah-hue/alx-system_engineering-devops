@@ -4,5 +4,5 @@ exec { 'higher-ulimit':
 }
 
 exec { 'restat-nginx':
-    command => 'service nginx restart',
+    command => 'service restart nginx',
 }
