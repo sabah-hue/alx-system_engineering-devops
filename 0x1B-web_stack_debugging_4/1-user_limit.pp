@@ -2,4 +2,6 @@
 
 exec { 'add-user':
     command => 'sudo adduser holberton',
-    }
+    path    => ['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin'],
+    onlyif  => 'id -u holberton >/dev/null 2>&1 ||! id -u holberton',
+}
