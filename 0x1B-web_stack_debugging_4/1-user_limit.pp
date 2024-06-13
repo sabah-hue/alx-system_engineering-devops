@@ -4,5 +4,5 @@ exec { 'add-user':
     command => 'sudo adduser holberton',
     }
 exec { 'fix-user':
-    command => '/usr/bin/env sed -i "s/holberton/foo/" /etc/security/limits.conf',
+    command => '/usr/bin/env sed -i "s/4/20000/; s/5/20000/" /etc/security/limits.conf',
     }
